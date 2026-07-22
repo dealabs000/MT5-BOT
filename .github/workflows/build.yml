@@ -33,8 +33,8 @@ jobs:
         shell: powershell
         run: |
           Invoke-WebRequest -Uri "https://download.mql5.com/cdn/web/metaquotes.software.corp/mt5/mt5setup.exe" -OutFile mt5setup.exe
-          Start-Process -FilePath mt5setup.exe -ArgumentList "/auto", "/D=C:\MT5" -Wait
-          Start-Sleep -Seconds 30
+          Start-Process -FilePath mt5setup.exe -ArgumentList "/auto", "/D=C:\MT5" -NoNewWindow -Wait
+          Start-Sleep -Seconds 45
 
       - name: Verify MT5 install
         shell: powershell
