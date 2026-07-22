@@ -37,9 +37,6 @@ jobs:
 
       - name: Run bot
         env:
-          MT5_LOGIN: ${{ secrets.MT5_LOGIN }}
-          MT5_PASSWORD: ${{ secrets.MT5_PASSWORD }}
-          MT5_SERVER: ${{ secrets.MT5_SERVER }}
           MAX_MINUTES: ${{ github.event.inputs.max_minutes }}
           SYMBOL: ${{ github.event.inputs.symbol }}
         run: python bot.py
