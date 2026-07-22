@@ -33,18 +33,21 @@ jobs:
         shell: powershell
         run: |
           Invoke-WebRequest -Uri "https://download.mql5.com/cdn/web/metaquotes.software.corp/mt5/mt5setup.exe" -OutFile mt5setup.exe
-          Start-Process -FilePath mt5setup.exe -ArgumentList "/auto", "/D=C:\MT5" -NoNewWindow -Wait
+          Start-Process -FilePath mt5setup.exe -ArgumentList "/auto" -NoNewWindow -Wait
           Start-Sleep -Seconds 45
 
-      - name: Verify MT5 install
+      - name: Find MT5 install location
         shell: powershell
         run: |
-          $path = "C:\MT5\terminal64.exe"
-          if (Test-Path $path) {
-            Write-Host "Found terminal at $path"
+          Write-Host "Searching for terminal64.exe on C: drive..."
+          $found = Get-ChildItem "C:\" -Recurse -Filter "terminal64.exe" -ErrorAction SilentlyContinue -Force
+          if ($found) {
+            $found | ForEach-Object { Write-Host "Found: $($_.FullName)" }
+            $foundPath = $found[0].FullName
+            Write-Host "Using: $foundPath"
+            "MT5_PATH=$foundPath" | Out-File -FilePath $env:GITHUB_ENV -Append
           } else {
-            Write-Host "terminal64.exe NOT found at expected path - listing C:\MT5:"
-            Get-ChildItem "C:\MT5" -Recurse -ErrorAction SilentlyContinue
+            Write-Host "terminal64.exe not found anywhere on C: drive"
             exit 1
           }
 
