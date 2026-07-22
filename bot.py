@@ -25,9 +25,9 @@ import MetaTrader5 as mt5
 
 # ---------- Config ----------
 
-LOGIN = int(os.environ["MT5_LOGIN"])
-PASSWORD = os.environ["MT5_PASSWORD"]
-SERVER = os.environ["MT5_SERVER"]
+LOGIN = 91317119          # <-- replace with your MT5 demo account number
+PASSWORD = "XENDERLOGIN8$y"  # <-- replace with your MT5 demo password
+SERVER = "LiteFinance-MT5-Demo"  # <-- replace with your exact server name from MT5 (File > Login)
 TERMINAL_PATH = os.environ.get("MT5_PATH", r"C:\Program Files\MetaTrader 5\terminal64.exe")
 MAX_MINUTES = int(os.environ.get("MAX_MINUTES", "230"))  # stop before GitHub's 6hr hard kill
 SYMBOL = os.environ.get("SYMBOL", "EURUSD")
