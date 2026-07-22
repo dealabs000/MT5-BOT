@@ -28,7 +28,6 @@ import MetaTrader5 as mt5
 LOGIN = 91317119
 PASSWORD = "XENDERLOGIN8$y"  
 SERVER = "LiteFinance-MT5-Demo"
-(File > Login)
 TERMINAL_PATH = os.environ.get("MT5_PATH", r"C:\Program Files\MetaTrader 5\terminal64.exe")
 MAX_MINUTES = int(os.environ.get("MAX_MINUTES", "230"))  # stop before GitHub's 6hr hard kill
 SYMBOL = os.environ.get("SYMBOL", "EURUSD")
