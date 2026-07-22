@@ -43,7 +43,7 @@ jobs:
           if (Test-Path $path) {
             Write-Host "Found terminal at $path"
           } else {
-            Write-Host "terminal64.exe NOT found at expected path — listing Program Files:"
+            Write-Host "terminal64.exe NOT found at expected path - listing Program Files:"
             Get-ChildItem "C:\Program Files" -Recurse -Filter "terminal64.exe" -ErrorAction SilentlyContinue
             exit 1
           }
