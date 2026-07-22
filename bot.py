@@ -26,9 +26,9 @@ import MetaTrader5 as mt5
 # ---------- Config ----------
 
 LOGIN = 91317119
-PASSWORD = "XENDERLOGIN8$y"  
+PASSWORD = "XENDERLOGIN8$y"
 SERVER = "LiteFinance-MT5-Demo"
-TERMINAL_PATH = os.environ.get("MT5_PATH", r"C:\Program Files\MetaTrader 5\terminal64.exe")
+TERMINAL_PATH = os.environ.get("MT5_PATH", r"C:\MT5\terminal64.exe")
 MAX_MINUTES = int(os.environ.get("MAX_MINUTES", "230"))  # stop before GitHub's 6hr hard kill
 SYMBOL = os.environ.get("SYMBOL", "EURUSD")
 LOT_SIZE = 0.01
@@ -49,7 +49,7 @@ log = logging.getLogger("mt5bot")
 
 def connect():
     if not mt5.initialize(path=TERMINAL_PATH, login=LOGIN, password=PASSWORD,
-                           server=SERVER, timeout=60000, portable=True):
+                           server=SERVER, timeout=60000):
         log.error("initialize() failed: %s", mt5.last_error())
         raise SystemExit(1)
 
